@@ -15,6 +15,13 @@ class Base
 class Derived1 : public Base {};
 class Derived2 : public Base {};
 
+// Helper function
+void showVptr(Base* instance)
+{
+	int* intPtr = reinterpret_cast<int*>(instance)
+	cout << *intPtr << endl;
+}
+
 void main()
 {
 
