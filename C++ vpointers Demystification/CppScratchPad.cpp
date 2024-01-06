@@ -8,6 +8,15 @@ using namespace std;
 // ---------------------- C++ vpointers Demystification -------------------------------
 //ref link:https://www.youtube.com/watch?v=VdvL8kFBubU&list=PLRwVmtr-pp05LyV3bYHwrFacNSNjbUqS6&index=17
 
+
+class Base;		// this line is for Base* 
+// Helper function
+void showVptr(Base* instance)
+{
+	int* intPtr = reinterpret_cast<int*>(instance);
+		cout << *intPtr << endl;
+}
+
 class Base
 {
 	virtual void foo() {}
@@ -15,20 +24,17 @@ class Base
 class Derived1 : public Base {};
 class Derived2 : public Base {};
 
-// Helper function
-void showVptr(Base* instance)
-{
-	int* intPtr = reinterpret_cast<int*>(instance)
-	cout << *intPtr << endl;
-}
-
 void main()
 {
-
+	Base b;
+	Derived1 d1;
+	Derived2 d2;
+	showVptr(&b);
+	showVptr(&d1);
+	showVptr(&d2);
+	Derived1 d1_1;			// same vtable output as d1
+	showVptr(&d1_1);
 }
-
-
-
 
 
 
